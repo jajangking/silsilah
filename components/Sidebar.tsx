@@ -206,14 +206,14 @@ export function Sidebar({
           </div>
           
           <div className="flex-1 overflow-y-auto p-4">
-            {!activeTree ? (
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center py-8">
-                Belum ada anggota keluarga
-              </p>
-            ) : (
+            {isMounted && activeTree && activeTree.rootIds.length > 0 ? (
               <div className="space-y-1">
                 {activeTree.rootIds.map((rootId) => renderMemberTree(activeTree, rootId))}
               </div>
+            ) : (
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center py-8">
+                Belum ada anggota keluarga
+              </p>
             )}
           </div>
           <div className="p-4 border-t border-zinc-200 dark:border-zinc-800">
