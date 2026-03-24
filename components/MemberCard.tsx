@@ -52,27 +52,37 @@ export function MemberCard({
       )}
       <div className="flex items-center gap-3 mb-3">
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center ${
-            member.isDeceased
+          className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 ${
+            member.photoUrl
+              ? ''
+              : member.isDeceased
               ? "bg-zinc-200 dark:bg-zinc-800"
               : member.gender === "male"
               ? "bg-blue-100 dark:bg-blue-900"
               : "bg-pink-100 dark:bg-pink-900"
           }`}
         >
-          <svg
-            className={`w-5 h-5 ${
-              member.isDeceased
-                ? "text-zinc-500 dark:text-zinc-500"
-                : member.gender === "male"
-                ? "text-blue-600 dark:text-blue-300"
-                : "text-pink-600 dark:text-pink-300"
-            }`}
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-          </svg>
+          {member.photoUrl ? (
+            <img
+              src={member.photoUrl}
+              alt={member.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <svg
+              className={`w-5 h-5 ${
+                member.isDeceased
+                  ? "text-zinc-500 dark:text-zinc-500"
+                  : member.gender === "male"
+                  ? "text-blue-600 dark:text-blue-300"
+                  : "text-pink-600 dark:text-pink-300"
+              }`}
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          )}
         </div>
         <div>
           <p

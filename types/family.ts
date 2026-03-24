@@ -7,6 +7,7 @@ export interface FamilyMember {
   birthDate?: string;
   deathDate?: string;
   isDeceased?: boolean;
+  photoUrl?: string;
 }
 
 export interface FamilyTree {
